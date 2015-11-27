@@ -8,7 +8,7 @@ module.exports.raw = true;
 function loader (content) {
     this.cacheable();
     var callback = this.async();
-    var url = emitFile(this, content);
+    var src = emitFile(this, content);
 
     Promise.all([
         getSizePromise(),
@@ -20,7 +20,7 @@ function loader (content) {
             width: size.width,
             height: size.height,
             placeholder: placeholder,
-            url: url
+            src: src
         };
 
         callback('module.exports = ' + JSON.stringify(output));
