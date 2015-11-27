@@ -1,0 +1,24 @@
+{
+  "name": "image-placeholder-loader",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-lange/image-placeholder-loader.git"
+  },
+  "author": "Kolja Lange <mail@klange.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k-lange/image-placeholder-loader/issues"
+  },
+  "homepage": "https://github.com/k-lange/image-placeholder-loader#readme",
+  "dependencies": {
+    "gm": "^1.21.1",
+    "loader-utils": "^0.2.12",
+    "mime": "^1.3.4"
+  }
+}
