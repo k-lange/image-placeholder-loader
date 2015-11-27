@@ -11,8 +11,8 @@ function loader (content) {
     var src = emitFile(this, content);
 
     Promise.all([
-        getSizePromise(),
-        getResizePromise().then(getDataUrl.bind(null, this.resourcePath))
+        getSizePromise(content),
+        getResizePromise(content).then(getDataUrl.bind(null, this.resourcePath))
     ]).then(function (values) {
         var size = values[0];
         var placeholder = values[1];
@@ -23,8 +23,8 @@ function loader (content) {
             src: src
         };
 
-        callback('module.exports = ' + JSON.stringify(output));
-    });
+        callback(null, 'module.exports = ' + JSON.stringify(output));
+    }).catch(function (error) { callback(error )});
 }
 
 function getSizePromise(content) {
@@ -58,5 +58,5 @@ function emitFile(context, content) {
 
 function getDataUrl(path, content) {
     var mimeType = mime.lookup(path);
-    return 'data:' +  (mimetype ? mimetype + ';' : '') + 'base64,' + content.toString('base64');
+    return 'data:' +  (mimeType ? mimeType + ';' : '') + 'base64,' + content.toString('base64');
 }
