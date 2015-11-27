@@ -12,7 +12,7 @@ function loader (content) {
 
     Promise.all([
         getSizePromise(),
-        getResizePromise.then(getDataUrl.bind(null, this.resourcePath))
+        getResizePromise().then(getDataUrl.bind(null, this.resourcePath))
     ]).then(function (values) {
         var size = values[0];
         var placeholder = values[1];
